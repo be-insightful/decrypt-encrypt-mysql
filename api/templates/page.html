@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <h1>Encryption Decryption</h1>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+
+    <div id="encryption">
+        <fieldset>
+            <legend>
+                <h3>1.암호화</h3>
+            </legend>
+            <form action="/encryption" method="post">
+                <label for="key">To Encrypt : </label>
+                <br>
+                <input type="text" id="key" name="key" size="100" autocomplete="off">
+                <br>
+                <br>
+                <label for="auth">Authentication key : </label>
+                <br>
+                <input type="text" id="auth" name="auth" autocomplete="off" value="{{auth}}">
+                <br>
+                <br>
+                <input type="submit" name="encryption" value="암호화" autocomplete="off">
+                <br><br>
+            </form>
+            <hr style="border: dashed 1px grey;">
+            <br>
+
+            <label for="en_result"> Result : </label>
+            <br>
+            <input type="text" name="en_result" id="en_result" value="{{result}}" size="150">
+            <br><br>
+            <button onclick="copy1()">Copy text</button>
+            <div class="box_colorcode_copied" id="copied_en">
+            </div>
+            <script>
+                function copy1() {
+                    var copyText = document.getElementById("en_result");
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999)
+                    document.execCommand("copy");
+                    
+                    var copied = document.getElementById("copied_en");
+                    copied.innerHTML = "Copied the text: " + copyText.value;
+                }
+            </script>
+            <br><br>
+            <hr style="border: dashed 1px grey;">
+            <form action="/" method="get">
+                <input type="submit" name="reset" value="reset">
+            </form>
+            <br>
+        </fieldset>
+
+    </div>
+
+    <div id="decryption">
+        <fieldset>
+            <legend>
+                <h3>2.복호화</h3>
+            </legend>
+            <form action="/decryption" method="post">
+
+                <label for="key">To Decrypt : </label>
+                <br>
+                <input type="text" id="key" name="key" size="150" autocomplete="off">
+                <br>
+                <br>
+                <label for="auth">Authentication key : </label>
+                <br>
+                <input type="text" id="auth" name="auth" autocomplete="off" value="{{auth2}}" >
+                <br>
+                <br>
+                <input type="submit" name="decryption" value="복호화">
+                <br><br>
+
+            </form>
+            <hr style="border: dashed 1px grey;">
+            <br>
+
+            <label for="result2"> Result : </label>
+            <br>
+            <input type="text" name="result2" id="result2" value="{{result2}}" size="150">
+            <br><br>
+            <button onclick="copy2()">Copy text</button>
+            <div class="box_colorcode_copied" id="copied_de">
+            </div>
+            <script>
+                function copy2() {
+                    var copyText = document.getElementById("result2");
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999)
+                    document.execCommand("copy");
+
+                    var copied = document.getElementById("copied_de");
+                    copied.innerHTML = "Copied the text: " + copyText.value;
+                }
+            </script>
+            <br><br>
+            <hr style="border: dashed 1px grey;">
+            <form action="/" method="get">
+                <input type="submit" name="reset" value="reset">
+            </form>
+            <br>
+        </fieldset>
+
+</body>
+
+</html>
